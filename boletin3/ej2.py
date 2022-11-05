@@ -14,7 +14,7 @@ def bien_parentizado_simple(cadena):
 
     return True
 
-def bien_parentizado_anidado(cadena):
+def bien_parentizado_multiple(cadena):
 #se contempla anidamiento de parentesis, corchetes y llaves
     signos_apertura = ['(', '[', '{']
     signos_cierre = [')', ']', '}']
@@ -30,12 +30,28 @@ def bien_parentizado_anidado(cadena):
 
     return True
 
+def bien_parentizado_anidado(cadena):
+    parentesis_abierto = 0
+    for caracter in cadena:
+        if (caracter == '('):
+            #al contemplarse el anidamiento los parentis abiertos se añaden sin problema
+            parentesis_abierto += 1
+        elif (caracter == ')' and parentesis_abierto == 0):
+            #si hay un parentesis de cierre y no hay ninguno abierto pendiente no esta bien parentizado
+            parentesis_abierto = False
+        elif (caracter == ')' and parentesis_abierto > 0):
+            #al cerrar un parentesis este se elimina de los pendientes
+            parentesis_abierto -= 1
+    #si se ha terminado de procesar la cadena el resultado dependera de si han quedado parentesis abiertos
+    return parentesis_abierto == 0
 
 # entrada de datos
 cadena = input('Introduzca un texto, se validara si está bien parentizado: ')
 
 # procesado
 print('El texto ' + ('está ' if bien_parentizado_simple(cadena) else 'no está ') + 'bien parentizado')
+
+print('El texto ' + ('está ' if bien_parentizado_multiple(cadena) else 'no está ') + 'bien parentizado')
 
 print('El texto ' + ('está ' if bien_parentizado_anidado(cadena) else 'no está ') + 'bien parentizado')
 
