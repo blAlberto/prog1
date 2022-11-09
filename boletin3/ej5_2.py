@@ -1,8 +1,15 @@
+# exercicio: 5.2
+# autor: Alberto Bravo López
+# email: alberto.bravo.lopez@rai.usc.es
+# propósito: O programa recibirá 2 cadeas, e comprobará se a segunda está contida na primeira
 
+print('Neste programa pediranse 2 cadeas por teclado e comprobarase se a segunda está contida na primeira')
 
+# Entrada de datos
 cadea = input('Introduzca unha cadea: ')
 subcadea = input('Introduzca a cadea a buscar na anterior: ')
 
+# Procesado 
 if (len(subcadea) > len(cadea)):
     print('A cadea buscada non está na primeira xa que a súa lonxitude e maior')
 else:

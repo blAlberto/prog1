@@ -1,21 +1,32 @@
+# exercicio: 12
+# autor: Alberto Bravo López
+# email: alberto.bravo.lopez@rai.usc.es
+# propósito: O programa pedirá as dimensións dunha matriz e despois os valores de cada posición para obter un vector
+#    que teña como componentes a suma dos valores de cada columna
 
-dimension = list(map(lambda item: int(item), input('Introduzca enteiros para as dimensions da matriz co formato "m,n": ').split(',')))
+# Entrada de datos
 
-if (len(dimension) != 2):
-    exit('O formato non e correcto')
+print('Neste programa pediranse as dimensións dunha matriz e os seus valores para obter un vector que teña como compoñentes a suma dos valores de cada columna da matriz')
 
-matriz = [[0] * dimension[1] for i in range(0, dimension[0])]
+filas = int(input('Introduzca o número de filas: '))
+columnas = int(input('Introduzca o número de columnas: '))
 
-for n in range(0, dimension[0]):
-    for m in range(0, dimension[1]):
+
+if (filas < 1 or columnas < 1):
+    exit('As dimensións non son correctas')
+
+matriz = [[0] * columnas for i in range(0, filas)]
+
+for n in range(0, filas):
+    for m in range(0, columnas):
         matriz[n][m] = int(input('Elemento [{},{}]: '.format(n, m)))
 
 print(matriz)
 
 vector_resultado = []
-for n in range(0, dimension[1]):
+for n in range(0, columnas):
     acumulador = 0
-    for m in range(0, dimension[0]):
+    for m in range(0, filas):
         acumulador += matriz[m][n]
     vector_resultado.append(acumulador)
 
